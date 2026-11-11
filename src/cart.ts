@@ -43,7 +43,8 @@ export class Cart {
     const line = this.lines.get(productId);
     if (!line) throw new Error(`product ${productId} is not in the cart`);
     if (!Number.isInteger(quantity) || quantity < 0) throw new Error("quantity must be zero or more");
-    line.quantity = quantity;
+    if (quantity === 0) this.remove(productId);
+    else line.quantity = quantity;
   }
 
   remove(productId: string): void {
