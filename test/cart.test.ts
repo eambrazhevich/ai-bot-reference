@@ -32,6 +32,14 @@ describe("Cart", () => {
     expect(cart.items()[0].quantity).toBe(4);
   });
 
+  it("removes the line when quantity is set to 0", () => {
+    const cart = new Cart();
+    cart.add("p5");
+    cart.add("p2");
+    cart.setQuantity("p5", 0);
+    expect(cart.items().map((l) => l.product.id)).toEqual(["p2"]);
+  });
+
   it("charges shipping on small orders and not on large ones", () => {
     const cart = new Cart();
     expect(cart.summary().shipping).toBe(0);
