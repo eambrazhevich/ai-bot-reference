@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tiny Shop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="/"><span class="logo-mark">◆</span> Tiny Shop</a>
+    <label class="search">
+      <span aria-hidden="true">⌕</span>
+      <input id="search" type="search" placeholder="Search products" autocomplete="off">
+    </label>
+    <button id="open-cart" class="cart-button" type="button">
+      Cart <span id="badge" class="badge">0</span>
+    </button>
+  </header>
+
+  <div class="promo-strip">Free shipping on orders from $50 · Use code <b>SAVE10</b> for 10% off</div>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <h2>Categories</h2>
+      <ul id="categories" class="categories"></ul>
+    </aside>
+
+    <section class="catalog">
+      <div class="catalog-head">
+        <p id="results" class="muted"></p>
+        <label class="sort">Sort
+          <select id="sort">
+            <option value="featured">Featured</option>
+            <option value="price">Price: low to high</option>
+            <option value="name">Name</option>
+          </select>
+        </label>
+      </div>
+      <ul id="products" class="grid"></ul>
+      <nav class="pager">
+        <button id="prev" type="button">← Prev</button>
+        <span id="page" class="muted"></span>
+        <button id="next" type="button">Next →</button>
+      </nav>
+    </section>
+  </main>
+
+  <div id="backdrop" class="backdrop" hidden></div>
+  <aside id="drawer" class="drawer" aria-label="Cart">
+    <div class="drawer-head">
+      <h2>Your cart</h2>
+      <button id="close-cart" class="icon" type="button" aria-label="Close">×</button>
+    </div>
+    <ul id="cart" class="cart-lines"></ul>
+    <p id="empty" class="muted empty">Your cart is empty.</p>
+    <form id="promo-form" class="promo">
+      <input id="promo" placeholder="Promo code" autocomplete="off">
+      <button type="submit">Apply</button>
+    </form>
+    <p id="promo-msg" class="promo-msg"></p>
+    <dl class="summary">
+      <dt>Subtotal</dt><dd id="subtotal">$0</dd>
+      <dt>Discount</dt><dd id="discount">$0</dd>
+      <dt>Shipping</dt><dd id="shipping">Free</dd>
+      <dt class="total">Total</dt><dd id="total" class="total">$0</dd>
+    </dl>
+    <button id="checkout" class="primary" type="button">Checkout</button>
+  </aside>
+
+  <dialog id="order">
+    <p class="order-emoji">🎉</p>
+    <h2>Thank you!</h2>
+    <p id="order-text"></p>
+    <form method="dialog"><button class="primary">Continue shopping</button></form>
+  </dialog>
+
+  <div id="toast" class="toast" hidden></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
